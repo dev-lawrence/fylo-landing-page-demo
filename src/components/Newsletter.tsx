@@ -79,7 +79,7 @@ const Newsletter = () => {
 
           <form onSubmit={handleSubmit}>
             <div className="md:flex md:items-center md:justify-between md:gap-4">
-              <div className="w-full">
+              <div className="relative w-full">
                 <input
                   className={`${message.type === "error" ? "mb-10" : "mb-4"} h-[45px] w-full rounded-full pl-4 text-black outline-none md:mb-0`}
                   value={email}
@@ -88,7 +88,7 @@ const Newsletter = () => {
                   placeholder="email@example.com"
                 />
                 {message.type === "error" && (
-                  <p className="-translate-y-4 text-accent-300">
+                  <p className="absolute bottom-4 left-4 text-accent-300 md:bottom-[-1.3rem]">
                     {message.text}
                   </p>
                 )}
@@ -100,11 +100,10 @@ const Newsletter = () => {
               >
                 {isLoading ? "Loading..." : "   Get Started For Free"}
               </button>
-
-              {message.type === "success" && (
-                <p className="mt-4">{message.text}</p>
-              )}
             </div>
+            {message.type === "success" && (
+              <p className="mt-4">{message.text}</p>
+            )}
           </form>
         </div>
       </div>
